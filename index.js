@@ -9,11 +9,12 @@ if (process.env.NODE_ENV == 'development') {
    dotenv.config({ path: __dirname + '/.env' });
 }
 
-const connection = require('./database/database');
-
 /**
  * Database
  * */
+const connection = require('./database/database');
+const Question = require('./database/models/Question');
+
 connection
    .authenticate()
    .then(() => {
@@ -44,7 +45,18 @@ app.post('/savequestion', (req, res) => {
    var title = req.body.title;
    var question = req.body.question;
 
-   res.send(`Form: TITLE ${title} | QUESTION ${question}`);
+   // INSERT
+   Question.create({
+      title: title,
+      question: question,
+   })
+      .then(() => {
+         // após enviar a pergunta, volta para a home
+         res.redirect('/');
+      })
+      .catch((erro) => {
+         console.log(erro);
+      });
 });
 
 app.listen(3300, () => {
