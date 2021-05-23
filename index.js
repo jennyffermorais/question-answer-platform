@@ -33,8 +33,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-   //o render olha dentro da pasta views
-   res.render('index');
+   // SELECT ALL
+   Question.findAll({ raw: true })
+      .then((questions) => {
+         console.log(questions);
+
+         //o render olha dentro da pasta views
+         res.render('index', {
+            questions: questions,
+         });
+      })
+      .catch((erro) => {
+         console.log(erro);
+      });
 });
 
 app.get('/question', (req, res) => {
