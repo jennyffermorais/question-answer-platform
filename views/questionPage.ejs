@@ -7,6 +7,17 @@
       <h1><%= question.title %></h1>
       <p><%= question.question %></p>
       <hr />
+      <form>
+         <h3>Answer here</h3>
+         <label>Answer</label>
+         <textarea
+            placeholder="Enter your answer"
+            class="form-control"
+            name="body"
+         ></textarea>
+         <br />
+         <button type="submit" class="btn btn-success">Answer</button>
+      </form>
    </div>
 </body>
 <%- include('./partials/footer.ejs') %>
