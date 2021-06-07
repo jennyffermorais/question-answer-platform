@@ -33,6 +33,9 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+/**
+ * Routes
+ * */
 app.get('/', (req, res) => {
    // SELECT ALL
    Question.findAll({ raw: true, order: [['id', 'DESC']] })
@@ -69,6 +72,20 @@ app.post('/savequestion', (req, res) => {
       .catch((erro) => {
          console.log(erro);
       });
+});
+
+app.get('/question/:id', (req, res) => {
+   const id = req.params.id;
+
+   Question.findOne({
+      where: { id: id },
+   }).then((question) => {
+      if (question != undefined) {
+         res.render('questionPage');
+      } else {
+         res.redirect('/');
+      }
+   });
 });
 
 app.listen(3300, () => {
