@@ -58,8 +58,8 @@ app.get('/question', (req, res) => {
 });
 
 app.post('/savequestion', (req, res) => {
-   var title = req.body.title;
-   var question = req.body.question;
+   const title = req.body.title;
+   const question = req.body.question;
 
    // INSERT
    Question.create({
@@ -89,6 +89,24 @@ app.get('/question/:id', (req, res) => {
          res.redirect('/');
       }
    });
+});
+
+app.post('/saveanswer', (req, res) => {
+   const body = req.body.body;
+   const questionId = req.body.question;
+
+   // INSERT
+   Answer.create({
+      body: body,
+      questionId: questionId,
+   })
+      .then(() => {
+         // após enviar a resposta, volta para a questionPage
+         res.redirect('/question/' + questionId);
+      })
+      .catch((erro) => {
+         console.log(erro);
+      });
 });
 
 app.listen(3300, () => {
