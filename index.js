@@ -26,6 +26,7 @@ connection
 
 //define o renderizador de html
 app.set('view engine', 'ejs');
+
 //possibilita o uso de arquivos estáticos
 app.use(express.static('public'));
 
@@ -34,7 +35,7 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
    // SELECT ALL
-   Question.findAll({ raw: true })
+   Question.findAll({ raw: true, order: [['id', 'DESC']] })
       .then((questions) => {
          console.log(questions);
 
