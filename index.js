@@ -81,7 +81,9 @@ app.get('/question/:id', (req, res) => {
       where: { id: id },
    }).then((question) => {
       if (question != undefined) {
-         res.render('questionPage');
+         res.render('questionPage', {
+            question: question,
+         });
       } else {
          res.redirect('/');
       }
