@@ -14,6 +14,7 @@ if (process.env.NODE_ENV == 'development') {
  * */
 const connection = require('./database/database');
 const Question = require('./database/models/Question');
+const Answer = require('./database/models/Answer');
 
 connection
    .authenticate()
