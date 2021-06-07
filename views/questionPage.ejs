@@ -8,14 +8,15 @@
       <p><%= question.question %></p>
       <hr />
       <form>
-         <h3>Answer here</h3>
-         <label>Answer</label>
+         <h3>Answer</h3>
+         <!-- <label>Answer</label> -->
          <textarea
             placeholder="Enter your answer"
             class="form-control"
             name="body"
          ></textarea>
          <br />
+         <input type="hidden" name="question" value="<%= question.id %>" />
          <button type="submit" class="btn btn-success">Answer</button>
       </form>
    </div>
