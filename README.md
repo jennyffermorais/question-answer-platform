@@ -43,7 +43,7 @@
 
 ## :dart: Sobre ##
 
-Plataforma de perguntas e respostas desenvolvido com o intuito de praticar e aplicar conceitos de NodeJS.
+Plataforma de perguntas e respostas desenvolvido com o intuito de praticar e aplicar conceitos de NodeJS. O banco de dados utilizado foi o Mysql.
 
 ## :sparkles: Funcionalidades ##
 
@@ -86,6 +86,9 @@ $ npm start
 ## :memo: Licença ##
 
 Este projeto está sob licença MIT. 
+
+## 💻 Ilustração do projeto ##
+<img src="./platform.png" alt="Platform" />
 
 
 Feito com :heart: por <a href="https://github.com/jennyffermorais" target="_blank">Jennyffer de Morais</a>
